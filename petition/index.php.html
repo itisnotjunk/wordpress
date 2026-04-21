@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<!-- Latest compiled and minified CSS -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet"/>
+<style>
+ 
+#loading-img{
+display:none;
+}
+ 
+.response_msg{
+margin-top:10px;
+font-size:13px;
+background:#E5D669;
+color:#ffffff;
+width:250px;
+padding:3px;
+display:none;
+}
+ 
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<h2>Open Letter in Support of Funder Open Publishing Mandates</h2>
+<p>We, the undersigned, believe that the world's scholarly literature is a public resource that only achieves its full value when it is freely available to all. For too long we have tolerated a pay-for-access business model for scholarly journals that is inequitable, impedes progress in our fields, and denies the public the full benefit of our work. We therefore welcome efforts on the part of public and private research funders to require that publications based on work they fund be made immediately freely and openly available without restrictions on access or use. 
+</p><p>Funders are uniquely positioned to transform scholarly publishing by changing the explicit and implicit rules under which we all operate. We recognize that funder mandates may superficially limit our publishing options in the short term, but believe they will lead to a system that optimizes what we really care about: maximizing the reach of our scholarship and its value to the research community and public. 
+</p><p>We understand that effective scholarly communication costs money, and support substantial investment in this endeavor, but only if it allows everyone to freely access and use the scholarly literature. We acknowledge that challenges remain, especially ensuring that all scholars everywhere have the unfettered ability to freely share their work and have their contributions recognized. And we therefore commit to continue working with funders, universities, research institutions and other stakeholders until we have created a stable, fair, effective and open system of scholarly communication.
+</p><p>
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/><b><!--? echo $rowout; ?-->
+<br/>
+<br/><b>And <!--? echo $others; ?--> others - see complete list <a href="signatures.php">here</a>. 
+
+
+
+<hr/>
+<h2>Sign the Letter</h2>
+<form accept-charset="UTF-8" action="" id="contact-form" method="post" name="contact-form">
+<div class="form-group">
+<label for="Name">Full Name (as you would like it displayed, including titles)</label>
+<input class="form-control" name="your_name" placeholder="Name" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="Affiliation">Affiliation (Employer, Institution, School, etc...)</label>
+<input class="form-control" name="your_affiliation" placeholder="Affiliation" type="text"/>
+</div>
+<div class="form-group">
+<label for="Role">How you science (e.g. Professor, Teacher, Citizen Scientist)</label>
+<input class="form-control" name="your_role" placeholder="Scientist" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="Country">Country</label>
+<input class="form-control" name="your_country" placeholder="Country" required="" type="text"/>
+</div>
+<div class="form-group">
+<label for="exampleInputEmail1">Email address</label>
+<input class="form-control" name="your_email" placeholder="Email" required="" type="email"/>
+</div>
+<button class="btn btn-primary" id="submit_form" name="submit" type="submit" value="Submit">Submit</button>
+</form>
+<div class="response_msg"></div>
+</b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></b></p></div>
+</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#contact-form").on("submit",function(e){
+e.preventDefault();
+if($("#contact-form [name='your_name']").val() === '')
+{
+$("#contact-form [name='your_name']").css("border","1px solid red");
+}
+else if ($("#contact-form [name='your_email']").val() === '')
+{
+$("#contact-form [name='your_email']").css("border","1px solid red");
+}
+else
+{
+var sendData = $( this ).serialize();
+$.ajax({
+type: "POST",
+url: "get_response.php",
+data: sendData,
+success: function(data){
+$("#loading-img").css("display","none");
+$(".response_msg").text(data);
+$(".response_msg").slideDown().fadeOut(3000);
+$("#contact-form").find("input[type=text], input[type=email], textarea").val("");
+document.location.reload(true)
+}
+ 
+});
+}
+});
+ 
+$("#contact-form input").blur(function(){
+var checkValue = $(this).val();
+if(checkValue != '')
+{
+$(this).css("border","1px solid #eeeeee");
+}
+});
+});
+</script>
+</body>
+</html>

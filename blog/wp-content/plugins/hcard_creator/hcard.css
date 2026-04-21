@@ -1,0 +1,22 @@
+/* 
+	
+	Wordpress hCard Creator Sample CSS
+	This is a sample CSS for you to edit your hCard styles.
+	Note that this css was made using the default template as a base, and with the hCard showing at the sidebar. 
+	
+*/
+
+.vcard { /* Main DIV for the hCard, every information is inside this DIV.  */
+	position: relative;
+}
+.vcard img { /* You can control the image position with this selector */
+	position: absolute;
+	float: left;
+	top: 0;
+}
+.vcard p { /* You can control paragraphs inside the DIV with this selector */
+	clear: left;
+}
+.adr span { /* You can control all spans inside the <address class="adr">. To style each span differently look for their class name at your source code */
+	display: block;
+}
